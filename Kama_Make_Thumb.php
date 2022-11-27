@@ -71,16 +71,21 @@ class Kama_Make_Thumb {
 
     public function __construct( $args = array(), $src = 'notset' ){
 		$this->opt = clone Kama_Thumbnail_Plugin::$opt;
+
 		if( ! self::$_main_host ) { // multisite support
             self::$_main_host = self::parse_main_dom(get_option('home'));
         }
+
 		$this->opt->allow_hosts = array_merge( // добавляем разрешенные
 			$this->opt->allow_hosts, [ self::$_main_host, 'youtube.com', 'youtu.be' ]
 		);
+
 		if( null === $this->debug ) {
             $this->debug = !empty($this->opt->debug);
         }
+
 		$this->set_args( $args, $src );
+
 		self::$last_instance = $this;
 	}
 

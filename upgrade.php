@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Code Admin panel Only
  *
@@ -7,7 +6,6 @@
 
 /**
  * Plugin Upgrade
- * Need initiated Democracy_Poll class.
  * Нужно вызывать на странице настроек плагина, чтобы не грузить лишний раз сервер.
  */
 function kama_thumb_upgrade(){

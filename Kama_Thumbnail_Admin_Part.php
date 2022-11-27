@@ -1,10 +1,11 @@
 <?php
-
+/**
+ * Admin Prt trait
+ */
 
 trait Kama_Thumbnail_Admin_Part {
 
     static function def_options(){
-
         // позволяет изменить дефолтные опции.
         // если хук используется, то страница опций плагина автоматически отключается.
         return apply_filters( 'kama_thumb_def_options', [
@@ -26,15 +27,16 @@ trait Kama_Thumbnail_Admin_Part {
         ] );
     }
 
-    ## для вывода сообещний в админке
+    /**
+     * для вывода сообщений в админке
+     */
     static function show_message( $text = '', $class = 'updated' ){
-
         add_action( 'admin_notices', function() use ( $text, $class ){
             echo '<div id="message" class="'. $class .' notice is-dismissible"><p>'. $text .'</p></div>';
         } );
     }
 
-    function admin_options(){
+    public function admin_options(){
         // для мультисайта создается отдельная страница в настройках сети
         if( is_multisite() ){
             $hook = add_submenu_page( 'settings.php', 'Kama Thumbnail', 'Kama Thumbnail', 'manage_network_options', self::$opt_pagename, array( $this, '_network_options_page') );
@@ -65,7 +67,7 @@ trait Kama_Thumbnail_Admin_Part {
         register_setting( self::$opt_pagename, self::$opt_name, [ $this, 'sanitize_options' ] );
     }
 
-    function _network_options_page(){
+    public function _network_options_page(){
         echo '<form method="POST" action="edit.php?action=kt_opt_up" style="max-width:900px;">';
         wp_nonce_field( self::$opt_pagename ); // settings_fields() не подходит для мультисайта...
         do_settings_sections( self::$opt_pagename );
@@ -73,7 +75,7 @@ trait Kama_Thumbnail_Admin_Part {
         echo '</form>';
     }
 
-    function _options_field(){
+    public function _options_field(){
 
         $opt_name = self::$opt_name;
 
@@ -174,7 +176,7 @@ trait Kama_Thumbnail_Admin_Part {
     }
 
     ## update options from network settings.php
-    function network_options_update(){
+    public function network_options_update(){
         // nonce check
         check_admin_referer( self::$opt_pagename );
 

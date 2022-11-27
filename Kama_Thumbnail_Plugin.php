@@ -2,9 +2,9 @@
 
 final class Kama_Thumbnail_Plugin {
 
-    static $opt_name     = 'kama_thumbnail';
-    static $opt_pagename = 'media'; // kama_thumb on multisite
-    static $opt;
+    public static $opt_name     = 'kama_thumbnail';
+    public static $opt_pagename = 'media'; // kama_thumb on multisite
+    public static $opt;
     private $skip_setting_page = false;
 
 	use Kama_Thumbnail_Admin_Part;
