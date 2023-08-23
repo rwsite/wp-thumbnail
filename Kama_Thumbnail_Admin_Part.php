@@ -39,11 +39,11 @@ trait Kama_Thumbnail_Admin_Part {
     public function admin_options(){
         // для мультисайта создается отдельная страница в настройках сети
         if( is_multisite() ){
-            $hook = add_submenu_page( 'settings.php', 'Kama Thumbnail', 'Kama Thumbnail', 'manage_network_options', self::$opt_pagename, array( $this, '_network_options_page') );
+            $hook = add_submenu_page( 'settings.php', 'Kama Thumbnail', 'Thumbnail', 'manage_network_options', self::$opt_pagename, array( $this, '_network_options_page') );
         }
 
         // Добавляем блок опций на базовую страницу "Чтение"
-        add_settings_section( 'kama_thumbnail', __('Kama Thumbnail Settings','thumbnail'), '', self::$opt_pagename );
+        add_settings_section( 'kama_thumbnail', __('Thumbnail Settings','thumbnail'), '', self::$opt_pagename );
 
         // Добавляем поля опций. Указываем название, описание,
         // функцию выводящую html код поля опции.

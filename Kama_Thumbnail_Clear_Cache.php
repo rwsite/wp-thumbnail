@@ -86,14 +86,14 @@ trait Kama_Thumbnail_Clear_Cache {
 
                 if( WP_DEBUG && current_user_can('manage_options') ){
                     self::show_message(
-                        __('All nophoto thumbs was deleted from <b>Kama Thumbnail</b> cache.','thumbnail'), 'notice-info'
+                        __('All nophoto thumbs was deleted from <b>Thumbnail</b> cache.','thumbnail'), 'notice-info'
                     );
                 }
             }
             // delete all
             else {
                 self::_clear_folder( $cache_dir );
-                self::show_message( __('<b>Kama Thumbnail</b> cache has been cleared.','thumbnail') );
+                self::show_message( __('<b>Thumbnail</b> cache has been cleared.','thumbnail') );
             }
         }
 

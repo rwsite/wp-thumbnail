@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     Thumbnail based by Kama Thumbnail
+ * Plugin Name:     Webp thumbnail
  * Plugin URL:      https://rwsite.ru
  * Description:     Thumbnail based by Kama Thumbnail. Support WebP format and other options. Creates post thumbnails on fly and cache it. The Image for the thumbnail is taken from: WP post thumbnail / first img in post content / first post attachment img. To creat thumb for any img in post content add class "mini" to img and resize it in visual editor.  In theme/plugin use functions: <code>kama_thumb_a_img()</code>, <code>kama_thumb_img()</code>, <code>kama_thumb_src()</code>.
  * Version:         3.4.1
