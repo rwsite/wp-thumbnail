@@ -562,7 +562,7 @@ class Kama_Make_Thumb {
 			return true;
 		}
 		catch( ImagickException $e ){
-			console_log( 'ImagickException: '. $e->getMessage() );
+			error_log( 'ImagickException: '. $e->getMessage() );
 			$this->metadata['lib'] = 'GD (force)';
 			return $this->make_thumbnail_GD( $img_string ); // Пробуем создать через GD.
 		}
