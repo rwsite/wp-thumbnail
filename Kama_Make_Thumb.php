@@ -160,7 +160,7 @@ class Kama_Make_Thumb {
 
         if( is_numeric($rg['src']) && 'notset' === $src) {
             $rg['attach_id'] = $rg['src'];
-            $src = $rg['attach_id'];
+            //$src = $rg['attach_id'];
         }
 
         // fixes
@@ -345,7 +345,7 @@ class Kama_Make_Thumb {
 	 */
 	protected function do_thumbnail(){
 
-		if( empty($this->src) ) { // если не передана ссылка, то ищем её в контенте и записываем пр.поле
+        if (empty($this->src) || 'no_photo' === $this->src) { // если не передана ссылка, то ищем её в контенте и записываем пр.поле
             $this->src = $this->get_src_and_set_postmeta();
             if( empty($this->src) ){
                 trigger_error( 'ERROR: No $src prop.', E_USER_NOTICE );
@@ -440,13 +440,12 @@ class Kama_Make_Thumb {
 		$this->src = self::_fix_src_protocol_domain( $this->src );
 		$img_string = $this->get_img_string();
 		$size = !empty($img_string) ? $this->_image_size_from_string( $img_string ) : false; // false
-        ;
 
-		/* Что-то не то. Вернем заглушку.
-		Если не удалось получить картинку: недоступный хост, файл пропал после переезда или еще чего.
-		То для указаного УРЛ будет создана миниатюра из заглушки no_photo.jpg
-		Чтобы после появления файла, миниатюра создалась правильно, нужно очистить кэш картинки.
-		*/
+        /* Что-то не то. Вернем заглушку.
+        Если не удалось получить картинку: недоступный хост, файл пропал после переезда или еще чего.
+        То для указаного УРЛ будет создана миниатюра из заглушки no_photo.jpg
+        Чтобы после появления файла, миниатюра создалась правильно, нужно очистить кэш картинки.
+        */
 		if( empty($img_string) || empty($size['mime']) || false === strpos( $size['mime'], 'image' ) ){
 			$this->metadata['stub'] = 'stub: image not found';
 			$this->src = self::_fix_src_protocol_domain( $this->stub_url );
@@ -664,7 +663,7 @@ class Kama_Make_Thumb {
 	protected static function _fix_src_protocol_domain(string $src){
 		if( 0 === strpos($src, '//') ) { // УРЛ без протокола: //site.ru/foo
             $src = (is_ssl() ? 'https' : 'http') . ":$src";
-        } elseif( '/' === $src[0] ) { // относительный УРЛ
+        } elseif (isset($src[0]) && '/' === $src[0]) { // относительный УРЛ
             $src = home_url($src);
         }
 		return $src;
