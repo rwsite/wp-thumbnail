@@ -346,7 +346,11 @@ class Kama_Make_Thumb {
 	protected function do_thumbnail(){
 
         if (empty($this->src) || 'no_photo' === $this->src) { // если не передана ссылка, то ищем её в контенте и записываем пр.поле
-            $this->src = $this->get_src_and_set_postmeta();
+
+            if(!empty($this->post_id)) {
+                $this->src = $this->get_src_and_set_postmeta();
+            }
+
             if( empty($this->src) ){
                 trigger_error( 'ERROR: No $src prop.', E_USER_NOTICE );
                 return false;
@@ -900,14 +904,12 @@ class Kama_Make_Thumb {
     public function get_src_and_set_postmeta(){
         global $post, $wpdb;
 
-        $post_id = intval( $this->post_id ?: $post->ID );
-
-        if( $src = get_post_meta( $post_id, $this->opt->meta_key, true ) ) {
+        if( $src = get_post_meta( $this->post_id, $this->opt->meta_key, true ) ) {
             return $src;
         }
 
         // проверяем наличие стандартной миниатюры
-        if( $_thumbnail_id = get_post_meta( $post_id, '_thumbnail_id', true ) ) {
+        if( $_thumbnail_id = get_post_meta( $this->post_id, '_thumbnail_id', true ) ) {
             $src = wp_get_attachment_url((int)$_thumbnail_id);
         }
 
@@ -922,7 +924,7 @@ class Kama_Make_Thumb {
             $attch_img = get_children( [
                 'numberposts'    => 1,
                 'post_mime_type' => 'image',
-                'post_parent'    => $post_id,
+                'post_parent'    => $this->post_id,
                 'post_type'      => 'attachment'
             ] );
 
@@ -936,7 +938,7 @@ class Kama_Make_Thumb {
             $src = 'no_photo';
         }
 
-        update_post_meta( $post_id, $this->opt->meta_key, wp_slash($src) );
+        update_post_meta( $this->post_id, $this->opt->meta_key, wp_slash($src) );
 
         return $src;
     }
