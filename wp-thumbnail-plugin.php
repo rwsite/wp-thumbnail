@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:     Webp thumbnail
+ * Plugin Name:     Thumbnail with webp support
  * Plugin URL:      https://rwsite.ru
- * Description:     Thumbnail based by Kama Thumbnail. Support WebP format and other options. Creates post thumbnails on fly and cache it. The Image for the thumbnail is taken from: WP post thumbnail / first img in post content / first post attachment img. To creat thumb for any img in post content add class "mini" to img and resize it in visual editor.  In theme/plugin use functions: <code>kama_thumb_a_img()</code>, <code>kama_thumb_img()</code>, <code>kama_thumb_src()</code>.
+ * Description:     WordPress thumbnail based by Kama Thumbnail. Support WebP format and other features. Creates post thumbnails on fly and cache it. The Image for the thumbnail is taken from: WP post thumbnail / first img in post content / first post attachment img. To creat thumb for any img in post content add class "mini" to img and resize it in visual editor.  In theme/plugin use functions: <code>kama_thumb_a_img()</code>, <code>kama_thumb_img()</code>, <code>kama_thumb_src()</code>.
  * Version:         3.4.1
  * Text Domain:     thumbnail
  * Domain Path:     /languages
@@ -12,10 +12,7 @@
  * Tags:            thumbnail
  * Requires at least: 4.6
  * Tested up to:    5.3.0
- * Requires PHP:    7.2+
- *
- * Based Author: Kama
- * Based Plugin URI: http://wp-kama.ru/?p=142
+ * Requires PHP:    7.4+
  */
 
 // Exit if accessed directly
@@ -24,8 +21,8 @@ defined( 'ABSPATH' ) || exit;
 define( 'KT_MAIN_FILE', __FILE__ );
 define( 'KT_PATH', wp_normalize_path(dirname(__FILE__) .'/') );
 
-if( false !== strpos( KT_PATH, wp_normalize_path(WP_PLUGIN_DIR) ) ||
-    false !== strpos( KT_PATH, wp_normalize_path(WPMU_PLUGIN_DIR) ) ) { // как плагин
+if(  strpos( KT_PATH, wp_normalize_path(WP_PLUGIN_DIR) ) ||
+     strpos( KT_PATH, wp_normalize_path(WPMU_PLUGIN_DIR) ) ) { // как плагин
     define('KT_URL', plugin_dir_url(__FILE__));
 } else {
     define('KT_URL', strtr(KT_PATH, [wp_normalize_path(get_template_directory()) => get_template_directory_uri()]));

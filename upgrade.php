@@ -1,7 +1,6 @@
 <?php
 /**
  * Code Admin panel Only
- *
  */
 
 /**
@@ -16,5 +15,4 @@ function kama_thumb_upgrade(){
 		return;
 	}
 	update_option( $ver_key, $cur_ver );
-	$KT = &$GLOBALS['Kama_Thumbnail'];
 }
