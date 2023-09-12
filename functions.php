@@ -1,5 +1,8 @@
 <?php
 
+// disable compress when upload
+add_filter('jpeg_quality', function (){return 100;});
+
 /**
  * Вернет только ссылку на миниатюру.
  *
