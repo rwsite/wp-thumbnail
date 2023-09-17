@@ -102,7 +102,7 @@ class Kama_Make_Thumb {
             'force_format' => null, // формат выходного изображения: jpg, png, gif
             'webp'        => $this->opt->webp,
             'stub_url'    => $this->opt->no_photo_url,  // url картинки заглушки
-            'allow'       => '',  // разрешенные хосты для этого запроса, чтобы не указывать настройку глобально
+            'allow'       => $this->opt->allow_hosts,  // разрешенные хосты для этого запроса, чтобы не указывать настройку глобально
             'width'       => '',  // пропорционально
             'height'      => '',  // пропорционально
             'attach_id'   => is_numeric($src) ? intval($src) : 0,
@@ -202,10 +202,14 @@ class Kama_Make_Thumb {
         }
 
         // default thumb size
-        if( ! $this->width && ! $this->height ) $this->width = $this->height = 100;
+        if( ! $this->width && ! $this->height ){
+            $this->width = $this->height = 100;
+        }
 
         // кадрирование не имеет смысла если одна из сторон равна 0 - она всегда будет подограна пропорционально...
-        if( ! $this->height || ! $this->width ) $this->crop = false;
+        if( ! $this->height || ! $this->width ){
+            $this->crop = false;
+        }
 
         // crop to array
         if( $this->crop ){
@@ -399,11 +403,10 @@ class Kama_Make_Thumb {
 			if( ! $thumb_url && file_exists( $stub_thumb_path = $this->_change_to_stub($this->thumb_path) ) ){
 				$this->thumb_path = $stub_thumb_path;
 				$this->thumb_url  = $this->_change_to_stub( $this->thumb_url );
-
 				$this->metadata['cache'] = 'stub';
-
-				if( $this->no_stub )
-					return false;
+				if( $this->no_stub ) {
+                    return false;
+                }
 
 				$thumb_url = $this->thumb_url;
 			}
@@ -535,7 +538,7 @@ class Kama_Make_Thumb {
 			$origin_w = $image->getImageWidth();
 
 			// получим координаты для считывания с оригинала и размер новой картинки
-			list( $dx, $dy, $wsrc, $hsrc, $width, $height ) = $this->_resize_coordinates( $origin_w, $origin_h );
+			[ $dx, $dy, $wsrc, $hsrc, $width, $height ] = $this->_resize_coordinates( $origin_w, $origin_h );
 
 			// crop
 			$image->cropImage( $wsrc, $hsrc, $dx, $dy );
@@ -592,10 +595,10 @@ class Kama_Make_Thumb {
             return false;
         }
 
-		list( $origin_w, $origin_h ) = $size;
+		[ $origin_w, $origin_h ] = $size;
 
 		// получим координаты для считывания с оригинала и размер новой картинки
-		list( $dx, $dy, $wsrc, $hsrc, $width, $height ) = $this->_resize_coordinates( $origin_w, $origin_h );
+		[ $dx, $dy, $wsrc, $hsrc, $width, $height ] = $this->_resize_coordinates( $origin_w, $origin_h );
 
 		// холст
 		$thumb = imagecreatetruecolor( $width, $height );
@@ -1049,7 +1052,7 @@ class Kama_Make_Thumb {
 
         // getimagesize support webP from PHP 7.1
         // speed: 2 sec per 50 000 iterations (fast)
-        list( $width, $height ) = @getimagesize( $this->thumb_path );
+        [ $width, $height ] = @getimagesize( $this->thumb_path );
 
         if( ! $this->crop ){ // не кадрируется и поэтому одна из сторон всегда будет отличаться от указанной...
             if( $width ) {
