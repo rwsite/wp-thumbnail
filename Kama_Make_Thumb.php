@@ -239,8 +239,9 @@ class Kama_Make_Thumb {
         }
 
         // add allowed hosts
-        if( $rg['allow'] ){
-            foreach( preg_split( '/[, ]+/', $rg['allow'] ) as $host ) {
+        if( !empty($rg['allow']) ){
+            // preg_split( '/[, ]+/', $rg['allow'])
+            foreach( (array) $rg['allow'] as $host ) {
                 $this->opt->allow_hosts[] = ($host === 'any') ? $host : self::parse_main_dom($host);
             }
         }
