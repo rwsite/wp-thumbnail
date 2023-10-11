@@ -345,7 +345,7 @@ class Kama_Make_Thumb {
 
 	/**
 	 * Create thumbnail or get it from cache
-     *
+	 *
 	 * @return null|false|string - Thumbnail URL or false.
 	 */
 	protected function do_thumbnail(){
@@ -708,8 +708,11 @@ class Kama_Make_Thumb {
 		if( false !== strpos($this->src, self::$_main_host) )
 			$img_url .= ( strpos($this->src, '?') ? '&' : '?' ) . 'kthumb'; // add_query_arg() юзать нельзя
 
-		if( false === strpos( $img_url, 'http') && '//' !== substr( $img_url, 0, 2 )  )
-			die( 'ERROR: image url begins with not "http" or "//". The URL: ' . esc_html($img_url) );
+		if( false === strpos( $img_url, 'http') && '//' !== substr( $img_url, 0, 2 )  ) {
+			// Base64 fix
+			// trigger_error('ERROR: image url begins with not "http" or "//". The URL: ' . esc_html($img_url));
+			return '';
+		}
 
 		// by ABSPATH ----
 		//if(0) // off
@@ -1015,17 +1018,23 @@ class Kama_Make_Thumb {
      *
      * @param string  $host  URL or Host like: site.ru, site1.site.ru, xn--n1ade.xn--p1ai
      *
-     * @return string Main domain name.
+     * @return string|false Main domain name.
      */
     public static function parse_main_dom( $host ){
 
         // URL passed || port is specified (dom.site.ru:8080 > dom.site.ru) (59.120.54.215:8080 > 59.120.54.215)
-        if( preg_match( '~/|:\d{2}~', $host ) )
-            $host = parse_url( $host, PHP_URL_HOST );
+        if( preg_match( '~/|:\d{2}~', $host ) ) {
+			$host = parse_url($host, PHP_URL_HOST);
+		}
+
+		if(empty($host)){
+			return false;
+		}
 
         // for http://localhost/foo  or  IP
-        if( ! strpos($host, '.') || filter_var($host, FILTER_VALIDATE_IP) )
-            return $host;
+        if( ! strpos($host, '.') || filter_var($host, FILTER_VALIDATE_IP) ) {
+			return $host;
+		}
 
         $host = preg_replace( '/^www\./', '', $host );
 
