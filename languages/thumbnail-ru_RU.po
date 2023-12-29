@@ -1,0 +1,168 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Thumbnail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-29 06:35+0000\n"
+"PO-Revision-Date: 2023-12-29 08:04+0000\n"
+"Last-Translator: Алексей\n"
+"Language-Team: Русский\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.6; wp-6.4.2\n"
+"X-Domain: thumbnail"
+
+#: Kama_Thumbnail_Clear_Cache.php:76
+msgid "<b>Thumbnail</b> cache has been cleared."
+msgstr "<b>Thumbnail</b> кэш очищен."
+
+#. Author of the plugin
+msgid "Aleksey Tikhomirov <alex@rwsite.ru>"
+msgstr "Алексей Тихомиров <alex@rwsite.ru>"
+
+#: Kama_Thumbnail_Clear_Cache.php:136
+#, php-format
+msgid "All custom fields <code>%s</code> was deleted."
+msgstr "Все настраиваемые поля <code>%s</code> удалены."
+
+#: Kama_Thumbnail_Clear_Cache.php:69
+msgid "All nophoto thumbs was deleted from <b>Thumbnail</b> cache."
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:54 Kama_Thumbnail_Admin_Part.php:62
+msgid "Are You Sure?"
+msgstr "Вы уверены?"
+
+#: Kama_Thumbnail_Admin_Part.php:162
+#, php-format
+msgid "Clear all cache automaticaly every %s days."
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:46
+msgid "Clear all images"
+msgstr "Удалить все изображения"
+
+#: Kama_Thumbnail_Admin_Part.php:41
+msgid "Clear nophoto Cache"
+msgstr "Удалить nophoto Кеш"
+
+#: Kama_Thumbnail_Clear_Cache.php:140
+#, php-format
+msgid "Couldn't delete <code>%s</code> custom fields"
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:114
+msgid "Custom field key, where the thumb URL will be. Default:"
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:224
+msgid "Debug mode. Recreates thumbs all time (disables the cache)."
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:175
+msgid "Disable HTTP requests."
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:150
+msgid "Don't show nophoto image."
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:197
+#, php-format
+msgid ""
+"Find specified here class of IMG tag in content and make thumb from found "
+"image by it sizes. Leave this field empty to disable this function. Default: "
+"%s"
+msgstr ""
+
+#: Kama_Make_Thumb.php:435
+msgid ""
+"Folder where thumbs will be created not exists. Create it manually: \"s%\""
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:99
+msgid "Full path to the cache folder with 755 rights or above."
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:123
+msgid ""
+"Hosts from which thumbs can be created. One per line: <i>sub.mysite.com</i>. "
+"Specify <code>any</code>, to use any hosts."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://rwsite.ru"
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:186
+msgid ""
+"Increase the thumbnail you create (width/height) if it is smaller than the "
+"specified size."
+msgstr ""
+
+#: Kama_Thumbnail_Clear_Cache.php:56
+msgid "Path to cache not set."
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:130
+msgid "Quality of creating thumbs from 0 to 100. Default:"
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:62
+msgid "Remove all data"
+msgstr "Удалить все аднные"
+
+#: Kama_Thumbnail_Admin_Part.php:54
+msgid "Remove Releted Custom Fields"
+msgstr "Удалить Связанные Настраиваемые поля"
+
+#: Kama_Thumbnail_Admin_Part.php:207
+msgid "seconds"
+msgstr "секунд"
+
+#: Kama_Thumbnail_Admin_Part.php:325
+msgid "Settings"
+msgstr "Настройки"
+
+#: Kama_Thumbnail_Admin_Part.php:209
+#, php-format
+msgid ""
+"The maximum number of seconds since PHP started, after which thumbnails "
+"creation will be stopped. Must be less then %s (current PHP "
+"`max_execution_time`)."
+msgstr ""
+
+#. Name of the plugin
+msgid "Thumbnail"
+msgstr "Миниатюра"
+
+#: Kama_Thumbnail_Admin_Part.php:34
+msgid "Thumbnail Settings"
+msgstr "Настройка миниатюр"
+
+#: Kama_Thumbnail_Admin_Part.php:106
+msgid "URL of cache folder."
+msgstr ""
+
+#: Kama_Thumbnail_Admin_Part.php:110
+msgid "URL of stub image."
+msgstr "URL-адрес заглушки изображения."
+
+#: Kama_Thumbnail_Admin_Part.php:139
+msgid "Use webp image."
+msgstr "Использовать webp изображения."
+
+#. Description of the plugin
+msgid ""
+"WordPress thumbnail based by Kama Thumbnail. Support WebP format and other "
+"features. Creates post thumbnails on fly and cache it. The Image for the "
+"thumbnail is taken from: WP post thumbnail / first img in post content / "
+"first post attachment img. To creat thumb for any img in post content add "
+"class \"mini\" to img and resize it in visual editor.  In theme/plugin use "
+"functions: <code>kama_thumb_a_img()</code>, <code>kama_thumb_img()</code>, "
+"<code>kama_thumb_src()</code>."
+msgstr ""

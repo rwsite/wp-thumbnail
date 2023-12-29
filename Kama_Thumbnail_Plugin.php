@@ -30,7 +30,7 @@ final class Kama_Thumbnail_Plugin
 
         // дополним опции (ниже определения опций)
         if (!$opt->no_photo_url) {
-            $opt->no_photo_url = KT_URL . 'no_photo.jpg';
+            $opt->no_photo_url = KT_URL . 'no_photo.png';
         }
         if (!$opt->cache_folder) {
             $opt->cache_folder = str_replace('\\', '/', WP_CONTENT_DIR . '/cache/thumb');

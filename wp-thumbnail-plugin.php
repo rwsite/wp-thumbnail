@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:     Thumbnail
+ * Plugin Name:     Post Thumbnails
  * Plugin URL:      https://rwsite.ru
- * Description:     WordPress thumbnail based by Kama Thumbnail. Support WebP format and other features. Creates post thumbnails on fly and cache it. The Image for the thumbnail is taken from: WP post thumbnail / first img in post content / first post attachment img. To creat thumb for any img in post content add class "mini" to img and resize it in visual editor.  In theme/plugin use functions: <code>kama_thumb_a_img()</code>, <code>kama_thumb_img()</code>, <code>kama_thumb_src()</code>.
- * Version:         3.4.1
+ * Description:     WordPress thumbnails based by Kama Thumbnail. Support WebP format and other features. Creates post thumbnails on fly and cache it. The Image for the thumbnail is taken from: WP post thumbnail / first img in post content / first post attachment img. To creat thumb for any img in post content add class "mini" to img and resize it in visual editor.  In theme/plugin use functions: <code>kama_thumb_a_img()</code>, <code>kama_thumb_img()</code>, <code>kama_thumb_src()</code>.
+ * Version:         3.4.2
  * Text Domain:     thumbnail
  * Domain Path:     /languages
  * Author:          Aleksey Tikhomirov <alex@rwsite.ru>
@@ -11,8 +11,8 @@
  *
  * Tags:            thumbnail
  * Requires at least: 4.6
- * Tested up to:    5.3.0
- * Requires PHP:    7.4+
+ * Tested up to:     6.4
+ * Requires PHP:     7.4+
  */
 
 // Exit if accessed directly
