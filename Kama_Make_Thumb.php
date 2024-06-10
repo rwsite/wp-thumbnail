@@ -382,7 +382,7 @@ class Kama_Make_Thumb {
 		$name_data = $this->file_name_data();
 		if( !isset($name_data) ) { // что-то не то с src
             return null;
-        } else if( empty($name_data->file_name) ) { // пропускаем SVG
+        } else if( empty($name_data->file_name) || 'svg' === $name_data->ext) { // пропускаем SVG
             return $this->src;
         }
 
@@ -396,7 +396,6 @@ class Kama_Make_Thumb {
 
 			if( ! $thumb_url && file_exists($this->thumb_path) ){
 				$thumb_url = $this->thumb_url;
-
 				$this->metadata['cache'] = 'found';
 			}
 
@@ -408,7 +407,6 @@ class Kama_Make_Thumb {
 				if( $this->no_stub ) {
                     return false;
                 }
-
 				$thumb_url = $this->thumb_url;
 			}
 
@@ -557,7 +555,7 @@ class Kama_Make_Thumb {
 			$this->metadata['thumb_format'] = $image->getImageFormat();
 
             if( $this->webp ) {
-                $image->writeImage('webp:'. $this->thumb_path );
+                $image->writeImage('webp:' . $this->thumb_path );
             } else {
                 $image->writeImage( $this->thumb_path );
             }
