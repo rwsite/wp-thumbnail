@@ -1,0 +1,15 @@
+{
+  "name": "rwsite/wp-thumbnail-plugin",
+  "description": "Creates post thumbnails on fly and cache it.",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "Aleksei Tikhomirov",
+      "email": "alex@rwsite.ru"
+    }
+  ],
+  "require": {
+  }
+}
