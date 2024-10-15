@@ -197,7 +197,7 @@ class Kama_Make_Thumb {
             $format = strtolower( sanitize_key($rg['force_format']) );
             if( 'jpg' === $format )
                 $format = 'jpeg';
-            if( in_array( $format, ['jpeg','png','gif'], true ) )
+            if( in_array( $format, ['jpeg','png','gif','avif'], true ) )
                 $this->force_format = $format;
         }
 

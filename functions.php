@@ -70,7 +70,7 @@ function kama_thumb($optname = '')
 function get_post_thumbnail($attr = null)
 {
     $thumbnail = null;
-    $attr = wp_parse_args($attr, [
+    $_attr = wp_parse_args($attr, [
         'width'            => '480',
         'height'           => '340',
         'crop'             => true,
@@ -80,7 +80,9 @@ function get_post_thumbnail($attr = null)
         'class'            => 'img-fluid rounded',
         'attr'             => '',
     ]);
-    extract($attr);
+    extract($_attr);
+
+    $post_id = $post_id ?: get_the_ID();
 
     if ($show_placeholder) {
         $thumbnail = get_option(
@@ -90,14 +92,14 @@ function get_post_thumbnail($attr = null)
     }
 
     $attachments = get_children([
-        'post_parent'    => $post_id ?: get_the_ID(),
+        'post_parent'    => $post_id,
         'post_mime_type' => 'image',
         'post_type'      => 'attachment',
         'numberposts'    => 1,
         'order'          => 'DESC',
     ]);
 
-    $attach_id = get_post_thumbnail_id($post_id ?? get_the_ID());
+    $attach_id = get_post_thumbnail_id($post_id);
     if (empty($attach_id) && !empty($attachments)) {
         $attach_id = array_values($attachments)[0]->ID;
     }
@@ -115,5 +117,5 @@ function get_post_thumbnail($attr = null)
         $thumbnail = !empty($attach_id) ? wp_get_attachment_image($attach_id, [$width, $height], true) : null;
     }
 
-    return $thumbnail;
+    return apply_filters('get_post_thumbnail', $thumbnail, $post_id, $_attr);
 }
